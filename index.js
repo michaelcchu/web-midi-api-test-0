@@ -44,10 +44,15 @@ function listInputsAndOutputs(midiAccess) {
     const message = event.data;
     const command = message[0];
     const pitch = message[1];
+    const velocity = message[2];
     if (command < 144) { //0x80 
         SoundGenerator.stopPlaying([pitch]);
     } else if (command < 160) { //0x90
-        SoundGenerator.startPlaying([pitch]);
+        if (velocity > 0) {
+            SoundGenerator.startPlaying([pitch]);
+        } else {
+            SoundGenerator.stopPlaying([pitch]);
+        }
     }
 
   }
