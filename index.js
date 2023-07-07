@@ -44,9 +44,9 @@ function listInputsAndOutputs(midiAccess) {
     const message = event.data;
     const command = message[0];
     const pitch = message[1];
-    if (command === 128) { //0x80
+    if (command < 144) { //0x80 
         SoundGenerator.stopPlaying([pitch]);
-    } else if (command === 144) { //0x90
+    } else if (command < 160) { //0x90
         SoundGenerator.startPlaying([pitch]);
     }
 

@@ -71,8 +71,7 @@ export default (() => {
     }
 
     function toFreq(note) {
-        return tuning.frequency * 2**((note.pitch - tuning.pitch)/12 
-            + note.octave - tuning.octave)
+        return 440 * 2**((note-69)/12);
     }
 
     function startPlaying(chord) {
